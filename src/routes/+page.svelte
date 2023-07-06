@@ -19,7 +19,7 @@
     const cols9: number[] = [...Array(Cols)];
     const cols10: number[] = [...Array(Cols)];
 
-    const rowItems: number[] = [...Array(numFirstTwoRows)].map(() => {
+    let rowItems: number[] = [...Array(numFirstTwoRows)].map(() => {
         return (incrementor += 1);
     });
     incrementor = 0;
@@ -66,7 +66,7 @@
     }
 
      function addFirstCols() {
-        rowItems.length++;
+        rowItems.push(rowItems.length++);
     }
 
     function subtractFirstRows() {
@@ -359,8 +359,8 @@
         text-align: center;
     }
     .changers{
-       position: absolute;
-       bottom: 150px;
+       position: relative;
+       bottom: 28%;
        color:rgb(45, 145, 112);
     }
 
