@@ -65,8 +65,16 @@
         rowItems.length--;
     }
 
+     function addFirstCols() {
+        rowItems.length++;
+    }
+
     function subtractFirstRows() {
         cols.length--;
+    }
+
+    function addFirstRows() {
+        cols.length++;
     }
     function subtractTheRestOfCols() {
         rowItems2.length--;
@@ -79,6 +87,18 @@
         rowItems9.length--;
         rowItems10.length--;
     }
+
+    function addTheRestOfCols() {
+        rowItems2.length++;
+        rowItems3.length++;
+        rowItems4.length++;
+        rowItems5.length++;
+        rowItems6.length++;
+        rowItems7.length++;
+        rowItems8.length++;
+        rowItems9.length++;
+        rowItems10.length++;
+    }
     function subtractTheRestOfRows() {
         cols2.length--;
         cols3.length--;
@@ -89,6 +109,18 @@
         cols8.length--;
         cols9.length--;
         cols10.length--;
+    }
+
+    function addTheRestOfRows() {
+        cols2.length++;
+        cols3.length++;
+        cols4.length++;
+        cols5.length++;
+        cols6.length++;
+        cols7.length++;
+        cols8.length++;
+        cols9.length++;
+        cols10.length++;
     }
 </script>
 <h1 class="caption">Times Table</h1>
@@ -264,6 +296,14 @@
 <li class="changer" on:click={subtractTheRestOfRows}>
     subtractTheRestOfRows
 </li>
+<li class="changer" on:click={addFirstCols}>addFirstCols</li>
+<li class="changer" on:click={addFirstRows}>addFirstRows</li>
+<li class="changer" on:click={addTheRestOfCols}>
+    addTheRestOfCols
+</li>
+<li class="changer" on:click={addTheRestOfRows}>
+    addTheRestOfRows
+</li>
 </div>
 <style>
    :global(body){
@@ -319,8 +359,8 @@
         text-align: center;
     }
     .changers{
-       position: fixed;
-       bottom: 310px;
+       position: absolute;
+       bottom: 150px;
        color:rgb(45, 145, 112);
     }
 
