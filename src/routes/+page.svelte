@@ -66,7 +66,7 @@
     }
 
      function addFirstCols() {
-        rowItems.push(rowItems.length++);
+        rowItems.length++;
     }
 
     function subtractFirstRows() {
@@ -125,6 +125,24 @@
 </script>
 <h1 class="caption">Times Table</h1>
 
+<div class="changers">
+<ul class="changer" on:click={subtractFirstCols}>subtractFirstCols</ul>
+<ul class="changer" on:click={subtractFirstRows}>subtractFirstRows</ul>
+<ul class="changer" on:click={subtractTheRestOfCols}>
+    subtractTheRestOfCols
+</ul>
+<ul class="changer" on:click={subtractTheRestOfRows}>
+    subtractTheRestOfRows
+</ul>
+<ul class="changer" on:click={addFirstCols}>addFirstCols</ul>
+<ul class="changer" on:click={addFirstRows}>addFirstRows</ul>
+<ul class="changer" on:click={addTheRestOfCols}>
+    addTheRestOfCols
+</ul>
+<ul class="changer" on:click={addTheRestOfRows}>
+    addTheRestOfRows
+</ul>
+</div>
 <div class="outer-box">
     <div
         class="row-item"
@@ -287,24 +305,7 @@
         </div>
     {/each}
 </div>
-<div class="changers">
-<li class="changer" on:click={subtractFirstCols}>subtractFirstCols</li>
-<li class="changer" on:click={subtractFirstRows}>subtractFirstRows</li>
-<li class="changer" on:click={subtractTheRestOfCols}>
-    subtractTheRestOfCols
-</li>
-<li class="changer" on:click={subtractTheRestOfRows}>
-    subtractTheRestOfRows
-</li>
-<li class="changer" on:click={addFirstCols}>addFirstCols</li>
-<li class="changer" on:click={addFirstRows}>addFirstRows</li>
-<li class="changer" on:click={addTheRestOfCols}>
-    addTheRestOfCols
-</li>
-<li class="changer" on:click={addTheRestOfRows}>
-    addTheRestOfRows
-</li>
-</div>
+
 <style>
    :global(body){
     background-color: black;
@@ -360,12 +361,14 @@
     }
     .changers{
        position: relative;
-       bottom: 28%;
+       display: flex;
+       top: 20%;
        color:rgb(45, 145, 112);
     }
 
     .changer{ 
-        position:relative;
-        cursor: pointer;
+       flex: 1;
+       align-content:space-between;
+       cursor: pointer;
     }
 </style>
