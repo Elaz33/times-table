@@ -4,58 +4,112 @@
     let numFirstTwoRows = 10;
     let numFirstTwoCols = 1;
 
-    let Cols = 1;
-    let Rows = 10;
-    let incrementor = 0;
 
-    const cols: number[] = [...Array(numFirstTwoCols)];
-    const cols2: number[] = [...Array(Cols)];
-    const cols3: number[] = [...Array(Cols)];
-    const cols4: number[] = [...Array(Cols)];
-    const cols5: number[] = [...Array(Cols)];
-    const cols6: number[] = [...Array(Cols)];
-    const cols7: number[] = [...Array(Cols)];
-    const cols8: number[] = [...Array(Cols)];
-    const cols9: number[] = [...Array(Cols)];
-    const cols10: number[] = [...Array(Cols)];
+
+
+    //******************************************************************************************
+
+    let numCols = 10;
+    let numRows = 10;
+
+    let cols: number[];
+    let rows: number[];
+
+
+
+    function recalculateColsAndRows() {
+        cols = Array(numCols).map((_, idx) => idx + 1);
+        rows = Array(numRows).map((_, idx) => idx + 1);
+    }
+
+
+
+    function incNumColsAndRows(incCols=0, incRows=0) {
+        numRows += incRows;
+        numCols += incCols;
+        recalculateColsAndRows();
+    }
+
+
+
+    recalculateColsAndRows();
+
+
+
+
+    //******************************************************************************************
+
+
+    const something = [1, 2, 3];
+
+    const somethingElse = [...something];
+    const somethingElse2 = something;
+    something.push(4);
+
+
+
+    let answers = [];
+    for (let iCol=1; iCol <= numCols; iCol++) {
+        answers[iCol] = [];
+        for (let iRow=1; iRow <= numRows; iRow++) {
+            answers[iCol][iRow] = iCol * iRow;
+        }
+    }
+
+
+    console.log(answers[3][4]);
+
+
+
+
+    const colszz: number[] = Array(numFirstTwoCols);
+    const cols2: number[] = Array(numCols);
+    const cols3: number[] = Array(numCols);
+    const cols4: number[] = Array(numCols);
+    const cols5: number[] = Array(numCols);
+    const cols6: number[] = Array(numCols);
+    const cols7: number[] = Array(numCols);
+    const cols8: number[] = Array(numCols);
+    const cols9: number[] = Array(numCols);
+    const cols10: number[] = Array(numCols);
 
     let rowItems: number[] = [...Array(numFirstTwoRows)].map(() => {
         return (incrementor += 1);
     });
     incrementor = 0;
-    const rowItems2: number[] = [...Array(Rows)].map(() => {
+    const rowItems2: number[] = Array(numRows).map(() => {
         return (incrementor += 2);
     });
     incrementor = 0;
-    const rowItems3: number[] = [...Array(Rows)].map(() => {
+    const rowItems3: number[] = [...Array(numRows)].map(() => {
         return (incrementor += 3);
     });
     incrementor = 0;
-    const rowItems4: number[] = [...Array(Rows)].map(() => {
+    const rowItems4: number[] = [...Array(numRows)].map(() => {
         return (incrementor += 4);
     });
     incrementor = 0;
-    const rowItems5: number[] = [...Array(Rows)].map(() => {
+    const rowItems5: number[] = [...Array(numRows)].map(() => {
         return (incrementor += 5);
     });
     incrementor = 0;
-    const rowItems6: number[] = [...Array(Rows)].map(() => {
+    const rowItems6: number[] = [...Array(numRows)].map(() => {
         return (incrementor += 6);
     });
     incrementor = 0;
-    const rowItems7: number[] = [...Array(Rows)].map(() => {
+    const rowItems7: number[] = [...Array(numRows)].map(() => {
         return (incrementor += 7);
     });
     incrementor = 0;
-    const rowItems8: number[] = [...Array(Rows)].map(() => {
+    const rowItems8: number[] = [...Array(numRows)].map(() => {
         return (incrementor += 8);
     });
     incrementor = 0;
-    const rowItems9: number[] = [...Array(Rows)].map(() => {
+    const rowItems9: number[] = [...Array(numRows)].map(() => {
         return (incrementor += 9);
     });
     incrementor = 0;
-    const rowItems10: number[] = [...Array(Rows)].map(() => {
+    const rowItems10: number[] = [...Array(numRows)].map(() => {
         return (incrementor += 10);
     });
 
@@ -65,7 +119,7 @@
         rowItems.length--;
     }
 
-     function addFirstCols() {
+    function addFirstCols() {
         rowItems.length++;
     }
 
@@ -126,45 +180,103 @@
 <h1 class="caption">Times Table</h1>
 
 <div class="changers">
-<ul class="changer" on:click={subtractFirstCols}>subtractFirstCols</ul>
-<ul class="changer" on:click={subtractFirstRows}>subtractFirstRows</ul>
-<ul class="changer" on:click={subtractTheRestOfCols}>
-    subtractTheRestOfCols
-</ul>
-<ul class="changer" on:click={subtractTheRestOfRows}>
-    subtractTheRestOfRows
-</ul>
-<ul class="changer" on:click={addFirstCols}>addFirstCols</ul>
-<ul class="changer" on:click={addFirstRows}>addFirstRows</ul>
-<ul class="changer" on:click={addTheRestOfCols}>
-    addTheRestOfCols
-</ul>
-<ul class="changer" on:click={addTheRestOfRows}>
-    addTheRestOfRows
-</ul>
+    <ul class="changer" on:click={subtractFirstCols}>subtractFirstCols</ul>
+    <ul class="changer" on:click={subtractFirstRows}>subtractFirstRows</ul>
+    <ul class="changer" on:click={subtractTheRestOfCols}>
+        subtractTheRestOfCols
+    </ul>
+    <ul class="changer" on:click={subtractTheRestOfRows}>
+        subtractTheRestOfRows
+    </ul>
+    <ul class="changer" on:click={addFirstCols}>addFirstCols</ul>
+    <ul class="changer" on:click={addFirstRows}>addFirstRows</ul>
+    <ul class="changer" on:click={addTheRestOfCols}>
+        addTheRestOfCols
+    </ul>
+    <ul class="changer" on:click={addTheRestOfRows}>
+        addTheRestOfRows
+    </ul>
 </div>
 <div class="outer-box">
     <div
-        class="row-item"
-        contenteditable="true"
-        bind:textContent={rowItems[0]}
+      class="row-item"
+      contenteditable="true"
+      bind:textContent={rowItems[0]}
     />
     {#each rowItems as rowItem}
         <div
-            class="row-item"
-            contenteditable="true"
-            bind:textContent={rowItem}
+          class="row-item"
+          contenteditable="true"
+          bind:textContent={rowItem}
         />
     {/each}
 </div>
+
+
+
+<!------------------------------- functionality ------------------------------>
+
+<div class="functionality-buttons">
+
+    <div>
+        <h2># of cols:</h2>
+        <div>
+            <button on:click={() => incNumColsAndRows(-1, 0)}>-</button>
+            <div>{numCols}</div>
+            <button on:click={() => incNumColsAndRows(1, 0)}>+</button>
+        </div>
+    </div>
+
+        <div>
+        <h2># of rows:</h2>
+        <div>
+            <button on:click={() => incNumColsAndRows(0, -1)}>-</button>
+            <div>{numRows}</div>
+            <button on:click={() => incNumColsAndRows(0, 1)}>+</button>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="outer-box">
+
+    <!-------------------------------- header row ------------------------------>
+    <div class="row header">
+        <div class="row-item"></div>
+        {#each cols as col}
+            <div class="row-item">{ col }</div>
+        {/each}
+    </div>
+
+    <!-------------------------------- answer rows ------------------------------>
+    {#each rows as row}
+        <div class="row">
+            <div class="row-item header">{row}</div>
+            {#each cols as col}
+                <div class="row-item">{ row * col }</div>
+            {/each}
+        </div>
+    {/each}
+
+</div>
+
+
+
+
+
+
+
+
 <div class="top-box1">
     {#each cols as col}
         <div class="row" contenteditable="true" bind:textContent={col}>
             {#each rowItems as rowItem}
                 <div
-                    class="row-item"
-                    contenteditable="true"
-                    bind:textContent={rowItem}
+                  class="row-item"
+                  contenteditable="true"
+                  bind:textContent={rowItem}
                 />
             {/each}
         </div>
@@ -176,9 +288,9 @@
         <div class="row" contenteditable="true" bind:textContent={col}>
             {#each rowItems as rowItem}
                 <div
-                    class="row-item"
-                    contenteditable="true"
-                    bind:textContent={rowItem}
+                  class="row-item"
+                  contenteditable="true"
+                  bind:textContent={rowItem}
                 />
             {/each}
         </div>
@@ -190,9 +302,9 @@
         <div class="row" contenteditable="true" bind:textContent={col2}>
             {#each rowItems2 as rowItem2}
                 <div
-                    class="row-item2"
-                    contenteditable="true"
-                    bind:textContent={rowItem2}
+                  class="row-item2"
+                  contenteditable="true"
+                  bind:textContent={rowItem2}
                 />
             {/each}
         </div>
@@ -203,9 +315,9 @@
         <div class="row" contenteditable="true" bind:textContent={col3}>
             {#each rowItems3 as rowItem3}
                 <div
-                    class="row-item"
-                    contenteditable="true"
-                    bind:textContent={rowItem3}
+                  class="row-item"
+                  contenteditable="true"
+                  bind:textContent={rowItem3}
                 />
             {/each}
         </div>
@@ -217,9 +329,9 @@
         <div class="row" contenteditable="true" bind:textContent={col4}>
             {#each rowItems4 as rowItem4}
                 <div
-                    class="row-item2"
-                    contenteditable="true"
-                    bind:textContent={rowItem4}
+                  class="row-item2"
+                  contenteditable="true"
+                  bind:textContent={rowItem4}
                 />
             {/each}
         </div>
@@ -230,9 +342,9 @@
         <div class="row" contenteditable="true" bind:textContent={col5}>
             {#each rowItems5 as rowItem5}
                 <div
-                    class="row-item"
-                    contenteditable="true"
-                    bind:textContent={rowItem5}
+                  class="row-item"
+                  contenteditable="true"
+                  bind:textContent={rowItem5}
                 />
             {/each}
         </div>
@@ -244,9 +356,9 @@
         <div class="row" contenteditable="true" bind:textContent={col6}>
             {#each rowItems6 as rowItem6}
                 <div
-                    class="row-item2"
-                    contenteditable="true"
-                    bind:textContent={rowItem6}
+                  class="row-item2"
+                  contenteditable="true"
+                  bind:textContent={rowItem6}
                 />
             {/each}
         </div>
@@ -257,9 +369,9 @@
         <div class="row" contenteditable="true" bind:textContent={col7}>
             {#each rowItems7 as rowItem7}
                 <div
-                    class="row-item"
-                    contenteditable="true"
-                    bind:textContent={rowItem7}
+                  class="row-item"
+                  contenteditable="true"
+                  bind:textContent={rowItem7}
                 />
             {/each}
         </div>
@@ -271,9 +383,9 @@
         <div class="row" contenteditable="true" bind:textContent={col8}>
             {#each rowItems8 as rowItem8}
                 <div
-                    class="row-item2"
-                    contenteditable="true"
-                    bind:textContent={rowItem8}
+                  class="row-item2"
+                  contenteditable="true"
+                  bind:textContent={rowItem8}
                 />
             {/each}
         </div>
@@ -284,9 +396,9 @@
         <div class="row" contenteditable="true" bind:textContent={col9}>
             {#each rowItems9 as rowItem9}
                 <div
-                    class="row-item"
-                    contenteditable="true"
-                    bind:textContent={rowItem9}
+                  class="row-item"
+                  contenteditable="true"
+                  bind:textContent={rowItem9}
                 />
             {/each}
         </div>
@@ -297,9 +409,9 @@
         <div class="row" contenteditable="true" bind:textContent={col10}>
             {#each rowItems10 as rowItem10}
                 <div
-                    class="row-item2"
-                    contenteditable="true"
-                    bind:textContent={rowItem10}
+                  class="row-item2"
+                  contenteditable="true"
+                  bind:textContent={rowItem10}
                 />
             {/each}
         </div>
@@ -307,9 +419,9 @@
 </div>
 
 <style>
-   :global(body){
-    background-color: black;
-   }
+    :global(body){
+        background-color: black;
+    }
 
     .caption {
         text-align: center;
@@ -335,11 +447,11 @@
         color: #c23434;
         font-size: larger;
     }
-    .outer-box {     
+    .outer-box {
         display: flex;
         flex-direction: column;
-         width: 10%;
-         background-color: green;
+        width: 10%;
+        background-color: green;
         font-weight: bolder;
         color: #c23434;
         font-size: medium;
@@ -360,15 +472,15 @@
         text-align: center;
     }
     .changers{
-       position: relative;
-       display: flex;
-       top: 20%;
-       color:rgb(45, 145, 112);
+        position: relative;
+        display: flex;
+        top: 20%;
+        color:rgb(45, 145, 112);
     }
 
-    .changer{ 
-       flex: 1;
-       align-content:space-between;
-       cursor: pointer;
+    .changer{
+        flex: 1;
+        align-content:space-between;
+        cursor: pointer;
     }
 </style>
